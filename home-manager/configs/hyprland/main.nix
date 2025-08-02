@@ -22,8 +22,6 @@
         "waybar"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
-        "pavucontrol --class=pavucontrol"
-        "wofi --show=drun"
       ];
 
       general = {
