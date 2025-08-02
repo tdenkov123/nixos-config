@@ -1,0 +1,123 @@
+{ pkgs, ... }: {
+  nixpkgs.config = {
+    allowUnfree = true;
+    permittedInsecurePackages = [
+      "openssl-1.1.1w"
+    ];
+  };
+
+  environment.systemPackages = with pkgs; [
+    # Desktop
+    audacity
+    chromium
+    spotify
+    qbittorrent
+    wireshark
+    telegram-desktop
+    mpv
+    vesktop
+    gparted
+    obsidian
+    nekoray    
+
+    # Development
+    gcc
+    gnumake
+    automake
+    cmake
+    ninja
+    valgrind
+    kdePackages.kcachegrind
+    git-graph
+    vscode
+    sublime4
+    neovim
+    python314
+    jupyter
+    ripgrep
+    silicon
+    
+    # CLI
+    alacritty
+    bottom
+    kitty
+    file
+    fastfetch
+    cpufetch
+    inxi
+    btop
+    tree
+    wget
+    git
+    htop
+    zip
+    unzip
+    ffmpeg
+    lux
+    mediainfo
+    bluez
+    bluez-tools
+    openssl
+    swww
+    brightnessctl
+    yt-dlp
+    eza
+    mc
+    yazi
+    
+    # GUI utils
+    feh
+    imv
+    udisks
+    #mako    
+
+    # Sound
+    pipewire
+    pulseaudio
+    pamixer
+
+    # GPU
+
+    # Screenshots
+    grim
+    grimblast
+    flameshot
+    swappy
+
+    # Other
+    home-manager
+    papirus-nord
+    polkit
+    playerctl
+
+    # Hyprland
+    hyprland
+    xwayland
+    seatd
+    xdg-desktop-portal-hyprland
+    polybar
+    waybar
+    rofi-wayland
+    wofi
+    wl-clipboard
+    cliphist
+    hyprpicker
+    pavucontrol
+    xfce.thunar
+    greetd.tuigreet
+    swaynotificationcenter
+
+  ];
+
+  fonts.packages = with pkgs; [
+    jetbrains-mono
+    noto-fonts
+    noto-fonts-emoji
+    twemoji-color-font
+    font-awesome
+    powerline-fonts
+    powerline-symbols
+    nerd-fonts.hurmit
+  ];
+
+}
