@@ -18,7 +18,7 @@
     vesktop
     gparted
     obsidian
-    nekoray    
+    nekoray
 
     # Development
     gcc
@@ -58,18 +58,19 @@
     bluez
     bluez-tools
     openssl
-    swww
     brightnessctl
     yt-dlp
     eza
     mc
     yazi
+    bat
+    lazygit
     
     # GUI utils
     feh
     imv
     udisks
-    #mako    
+    #mako
 
     # Sound
     pipewire
@@ -81,8 +82,6 @@
     # Screenshots
     grim
     grimblast
-    flameshot
-    swappy
 
     # Other
     home-manager
