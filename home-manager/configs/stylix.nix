@@ -28,7 +28,7 @@
 
     cursor = {
       name = "DMZ-Black";
-      size = 24;
+      size = 16;
       package = pkgs.vanilla-dmz;
     };
 
