@@ -4,6 +4,7 @@
     ./git.nix
     ./zsh.nix
     ./stylix.nix
+    ./qbittorrent.nix
     ./hyprland
     ./wofi
     ./waybar
