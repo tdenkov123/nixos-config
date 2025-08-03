@@ -6,7 +6,7 @@ in {
     enable = true;
     settings = {
       default_session = {
-        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session} --asterisks --asterisks-char * --greet-align center";
+        command = "${tuigreet} --time --remember --remember-session --sessions ${hyprland-session} --greet-align center";
         user = user;
       };
     };

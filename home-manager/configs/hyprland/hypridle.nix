@@ -3,7 +3,7 @@
     enable = true;
     settings = {
       general = {
-        before_sleep_cmd = "loginctl lock-session";
+        before_sleep_cmd = "pidof hyprlock || hyprlock";
         after_sleep_cmd = "hyprctl dispatch dpms on";
         ignore_dbus_inhibit = false;
         lock_cmd = "pidof hyprlock || hyprlock";
@@ -16,17 +16,17 @@
           on-resume = "brightnessctl -r";
         }
         {
-          timeout = 300;
-          on-timeout = "loginctl lock-session";
+          timeout = 30000;
+          on-timeout = "pidof hyprlock || hyprlock";
         }
         {
-          timeout = 600;
+          timeout = 60000;
           on-timeout = "hyprctl dispatch dpms off";
           on-resume = "hyprctl dispatch dpms on";
         }
         {
-          timeout = 1200;
-          on-timeout = "sysemctl suspend";
+          timeout = 120000;
+          on-timeout = "systemctl suspend";
         }
       ];
     };
