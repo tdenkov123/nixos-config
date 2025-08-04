@@ -9,13 +9,13 @@
         height = 30;
         modules-left = ["hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = ["hyprland/language" "custom/weather" "pulseaudio" "battery" "clock" "tray"];
+        modules-right = [ "tray" "hyprland/language" "custom/weather" "pulseaudio" "battery" "clock" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
           show-special = true;
           special-visible-only = true;
           all-outputs = false;
-          format = "{icon}";
+          format = "{}";
           format-icons = {
             "1" = "1";
             "2" = "2";
@@ -34,7 +34,7 @@
         };
 
         "hyprland/language" = {
-          format = "{icon}";
+          format = "{}";
           format-en = "🇺🇸";
           format-ru = "🇷🇺";
           min-length = 5;
