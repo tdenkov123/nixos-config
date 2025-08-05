@@ -35,8 +35,8 @@
 
         "hyprland/language" = {
           format = "{}";
-          format-en = "🇺🇸";
-          format-ru = "🇷🇺";
+          format-en = "en";
+          format-ru = "ru";
           min-length = 5;
           tooltip = false;
         };
