@@ -36,9 +36,8 @@
         "hyprland/language" = {
           format = "{}";
           format-en = "en";
+          on-click = "hyprctl switchxkblayout at-translated-set-2-keyboard next";
           format-ru = "ru";
-          min-length = 5;
-          tooltip = false;
         };
 
         "custom/weather" = {

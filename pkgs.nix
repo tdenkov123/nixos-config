@@ -50,6 +50,7 @@
     wget
     git
     htop
+    curl
     zip
     unzip
     ffmpeg
