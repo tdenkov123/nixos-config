@@ -8,6 +8,5 @@
     ./hyprland
     ./wofi
     ./waybar
-    # ./zapret.nix
   ];
 }
