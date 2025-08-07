@@ -7,9 +7,9 @@
         layer = "top";
         position = "top";
         height = 30;
-        modules-left = ["hyprland/workspaces"];
+        modules-left = ["custom/media-player" "hyprland/workspaces"];
         modules-center = ["hyprland/window"];
-        modules-right = [ "tray" "hyprland/language" "custom/weather" "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "custom/vitals" "hyprland/language" "custom/weather" "pulseaudio" "battery" "clock" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
           show-special = true;
@@ -82,6 +82,29 @@
         "tray" = {
           icon-size = 14;
           spacing = 1;
+        };
+
+        "custom/media-player" = {
+          format = "{icon} {artist} - {title}";
+          format-icons = {
+            playing = "";
+            paused = "";
+            stopped = "";
+          };
+          exec = "python3 ${./scripts/media-player.py}";
+          interval = 2;
+          max-length = 50;
+          on-click = "playerctl play-pause";
+          on-scroll-up = "playerctl next";
+          on-scroll-down = "playerctl previous";
+        };
+
+        "custom/vitals" = {
+          format = "CPU: {cpu}% | RAM: {ram}% | TEMP: {temp}°C";
+          exec = "python3 ${./scripts/vitals.py}";
+          interval = 3;
+          tooltip = true;
+          on-click = "gnome-system-monitor";
         };
       };
     };
