@@ -66,6 +66,7 @@
     yazi
     bat
     lazygit
+    tetris
     
     # GUI utils
     feh
