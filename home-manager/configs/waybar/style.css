@@ -3,7 +3,7 @@
   border-radius: 12px;
   font-family: "JetBrains Mono";
   font-weight: bold;
-  font-size: 16px;
+  font-size: 13px;
   min-height: 0;
   color: #ebdbb2;
 }
@@ -56,6 +56,19 @@ window#waybar {
   background: rgba(40, 40, 40, 0.5);
   border-radius: 10px;
   transition: all 0.3s ease;
+}
+
+#cpu, #memory, #battery, #backlight, #pulseaudio, #network, #clock, #custom-weather, #tray, #language, #weather {
+  font-size: 13px;
+}
+
+#cpu i, #memory i, #battery i, #backlight i, #pulseaudio i, #network i, #clock i, #custom-weather i, #tray i, #language i, #weather i {
+  font-size: 13px;
+}
+
+#cpu, #memory {
+  margin-left: 10px;
+  margin-right: 10px;
 }
 
 #clock:hover, #battery:hover, #pulseaudio:hover, #tray:hover, #language:hover, #weather:hover, #custom-weather:hover {
@@ -127,9 +140,6 @@ window#waybar {
 
 #custom-mpris-text {
   padding-right: 8px;
-}
-#custom-mpris-text label {
-  line-height: 1.0;
 }
 
 #custom-mpris-controls {

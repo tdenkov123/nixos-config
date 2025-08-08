@@ -7,9 +7,9 @@
         layer = "top";
         position = "top";
         height = 30;
-        modules-left = ["hyprland/workspaces"];
+        modules-left = ["hyprland/workspaces" "cpu" "custom/cpu-freq" "memory"];
         modules-center = ["group/mpris" "hyprland/window"];
-        modules-right = [ "tray" "hyprland/language" "custom/weather" "cpu" "custom/cpu-freq" "memory" "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "hyprland/language" "custom/weather"  "pulseaudio" "battery" "clock" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
           show-special = true;
