@@ -7,9 +7,9 @@
         layer = "top";
         position = "top";
         height = 30;
-        modules-left = ["custom/media-player" "hyprland/workspaces"];
-        modules-center = ["hyprland/window"];
-        modules-right = [ "tray" "custom/vitals" "hyprland/language" "custom/weather" "pulseaudio" "battery" "clock" ];
+        modules-left = ["hyprland/workspaces"];
+        modules-center = ["group/mpris" "hyprland/window"];
+        modules-right = [ "tray" "hyprland/language" "custom/weather" "cpu" "custom/cpu-freq" "memory" "pulseaudio" "battery" "clock" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
           show-special = true;
@@ -45,6 +45,25 @@
           exec = "curl -s 'wttr.in/Moscow?format=%c%t'";
           interval = 300;
           class = "weather";
+        };
+
+        "cpu" = {
+          format = " {usage}%";
+          interval = 5;
+          tooltip = true;
+        };
+
+        "memory" = {
+          format = " {percentage}%";
+          interval = 5;
+          tooltip = true;
+        };
+
+        "custom/cpu-freq" = {
+          format = "󰻠 {}";
+          exec = "awk -F: '/cpu MHz/ {sum+=$2; n++} END { if (n) printf(\"%.1f GHz\", sum/n/1000) }' /proc/cpuinfo";
+          interval = 3;
+          tooltip = false;
         };
 
         "pulseaudio" = {
@@ -84,27 +103,47 @@
           spacing = 1;
         };
 
-        "custom/media-player" = {
-          format = "{icon} {artist} - {title}";
-          format-icons = {
-            playing = "";
-            paused = "";
-            stopped = "";
-          };
-          exec = "python3 ${./scripts/media-player.py}";
-          interval = 2;
-          max-length = 50;
-          on-click = "playerctl play-pause";
-          on-scroll-up = "playerctl next";
-          on-scroll-down = "playerctl previous";
+        "group/mpris" = {
+          orientation = "horizontal";
+          modules = ["image#mpris-art" "custom#mpris-text" "custom#mpris-prev" "custom#mpris-toggle" "custom#mpris-next"];
         };
 
-        "custom/vitals" = {
-          format = "CPU: {cpu}% | RAM: {ram}% | TEMP: {temp}°C";
-          exec = "python3 ${./scripts/vitals.py}";
-          interval = 3;
+        "image#mpris-art" = {
+          exec = "bash ${./scripts/mpris_art.sh} 26";
+          size = 26;
+          interval = 2;
+        };
+
+        "custom#mpris-text" = {
+          return-type = "json";
+          exec = "bash ${./scripts/mpris_block.sh}";
+          format = "{text}";
           tooltip = true;
-          on-click = "gnome-system-monitor";
+          escape = false;
+          hide-empty-text = true;
+          on-click = "playerctl -p spotify play-pause";
+        };
+
+        "custom#mpris-prev" = {
+          exec = "echo ''";
+          exec-if = "playerctl -p spotify status >/dev/null 2>&1";
+          interval = 3600;
+          tooltip = false;
+          on-click = "playerctl -p spotify previous";
+        };
+        "custom#mpris-toggle" = {
+          exec = "playerctl -p spotify status 2>/dev/null | awk '{ if ($1==\"Playing\") print \"\"; else print \"\" }'";
+          exec-if = "playerctl -p spotify status >/dev/null 2>&1";
+          interval = 1;
+          tooltip = false;
+          on-click = "playerctl -p spotify play-pause";
+        };
+        "custom#mpris-next" = {
+          exec = "echo ''";
+          exec-if = "playerctl -p spotify status >/dev/null 2>&1";
+          interval = 3600;
+          tooltip = false;
+          on-click = "playerctl -p spotify next";
         };
       };
     };

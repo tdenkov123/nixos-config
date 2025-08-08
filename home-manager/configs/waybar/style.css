@@ -108,3 +108,45 @@ window#waybar {
 #language, #custom-weather, #pulseaudio, #battery, #clock, #tray {
   border-bottom: none;
 }
+
+/* MPRIS group styling */
+#group-mpris {
+  background: rgba(80, 80, 80, 0.3);
+  border: 1px solid rgba(255,255,255,0.08);
+  padding: 2px 8px 2px 4px;
+  margin: 2px 6px;
+  border-radius: 12px;
+}
+
+#image.mpris-art, #image#mpris-art {
+  margin-right: 8px;
+  border-radius: 6px;
+  min-width: 24px;
+  min-height: 24px;
+}
+
+#custom-mpris-text {
+  padding-right: 8px;
+}
+#custom-mpris-text label {
+  line-height: 1.0;
+}
+
+#custom-mpris-controls {
+  font-family: "JetBrains Mono", monospace;
+  letter-spacing: 2px;
+}
+#custom-mpris-controls:hover {
+  background: rgba(255,255,255,0.08);
+}
+
+/* Controls styling */
+#custom-mpris-prev, #custom-mpris-toggle, #custom-mpris-next {
+  padding: 0 6px;
+  margin: 0 2px;
+  background: transparent;
+}
+#custom-mpris-prev:hover, #custom-mpris-toggle:hover, #custom-mpris-next:hover {
+  background: rgba(255,255,255,0.08);
+  border-radius: 6px;
+}
