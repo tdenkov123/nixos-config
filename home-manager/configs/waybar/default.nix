@@ -1,7 +1,9 @@
-{
+{ pkgs, unstablePkgs, ... }: {
   programs.waybar = {
     enable = true;
+    package = unstablePkgs.waybar;
     style = ./style.css;
+    systemd.enable = true;
     settings = {
       mainBar = {
         layer = "top";
@@ -79,7 +81,10 @@
             "car" = "";
             "default" = ["" ""];
           };
+          scroll-step = 2;
           on-click = "pavucontrol";
+          on-scroll-up = "pamixer -i 2";
+          on-scroll-down = "pamixer -d 2";
         };
 
         "battery" = {
@@ -146,6 +151,17 @@
           on-click = "playerctl -p spotify next";
         };
       };
+    };
+  };
+
+  systemd.user.services.waybar = {
+    Unit = {
+      After = [ "graphical-session.target" "pipewire.socket" "pipewire-pulse.socket" "wireplumber.service" ];
+      Wants = [ "pipewire.socket" "pipewire-pulse.socket" "wireplumber.service" ];
+      PartOf = [ "graphical-session.target" ];
+    };
+    Service = {
+      ExecStartPre = [ "${pkgs.pulseaudio}/bin/pactl info >/dev/null 2>&1 || true" ];
     };
   };
 }

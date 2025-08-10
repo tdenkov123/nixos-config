@@ -1,4 +1,4 @@
-{ pkgs, ... }: {
+{ pkgs, unstablePkgs, ... }: {
   nixpkgs.config = {
     allowUnfree = true;
     permittedInsecurePackages = [
@@ -97,7 +97,7 @@
     seatd
     xdg-desktop-portal-hyprland
     polybar
-    waybar
+    (unstablePkgs.waybar)
     rofi-wayland
     wofi
     wl-clipboard
