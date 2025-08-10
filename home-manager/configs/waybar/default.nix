@@ -10,7 +10,7 @@
         position = "top";
         height = 33;
         modules-left = ["hyprland/workspaces" "cpu" "custom/cpu-freq" "memory"];
-        modules-center = ["group/mpris" "hyprland/window"];
+        modules-center = ["hyprland/window"];
         modules-right = [ "tray" "hyprland/language" "custom/weather"  "pulseaudio" "battery" "clock" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
@@ -107,16 +107,5 @@
           icon-size = 14;
           spacing = 1;
         };
-  };
-
-  systemd.user.services.waybar = {
-    Unit = {
-      After = [ "graphical-session.target" "pipewire.socket" "pipewire-pulse.socket" "wireplumber.service" ];
-      Wants = [ "pipewire.socket" "pipewire-pulse.socket" "wireplumber.service" ];
-      PartOf = [ "graphical-session.target" ];
-    };
-    Service = {
-      ExecStartPre = [ "${pkgs.pulseaudio}/bin/pactl info >/dev/null 2>&1 || true" ];
-    };
   };
 }
