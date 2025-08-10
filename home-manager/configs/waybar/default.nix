@@ -107,51 +107,6 @@
           icon-size = 14;
           spacing = 1;
         };
-
-        "group/mpris" = {
-          orientation = "horizontal";
-          modules = ["image#mpris-art" "custom#mpris-text" "custom#mpris-prev" "custom#mpris-toggle" "custom#mpris-next"];
-        };
-
-        "image#mpris-art" = {
-          exec = "bash ${./scripts/mpris_art.sh} 26";
-          size = 26;
-          interval = 2;
-        };
-
-        "custom#mpris-text" = {
-          return-type = "json";
-          exec = "bash ${./scripts/mpris_block.sh}";
-          format = "{text}";
-          tooltip = true;
-          escape = false;
-          hide-empty-text = true;
-          on-click = "playerctl -p spotify play-pause";
-        };
-
-        "custom#mpris-prev" = {
-          exec = "echo ''";
-          exec-if = "playerctl -p spotify status >/dev/null 2>&1";
-          interval = 3600;
-          tooltip = false;
-          on-click = "playerctl -p spotify previous";
-        };
-        "custom#mpris-toggle" = {
-          exec = "playerctl -p spotify status 2>/dev/null | awk '{ if ($1==\"Playing\") print \"\"; else print \"\" }'";
-          exec-if = "playerctl -p spotify status >/dev/null 2>&1";
-          interval = 1;
-          tooltip = false;
-          on-click = "playerctl -p spotify play-pause";
-        };
-        "custom#mpris-next" = {
-          exec = "echo ''";
-          exec-if = "playerctl -p spotify status >/dev/null 2>&1";
-          interval = 3600;
-          tooltip = false;
-          on-click = "playerctl -p spotify next";
-        };
-      };
-    };
   };
 
   systemd.user.services.waybar = {
