@@ -3,7 +3,6 @@
     enable = true;
     package = unstablePkgs.waybar;
     style = ./style.css;
-    systemd.enable = true;
     settings = {
       mainBar = {
         layer = "top";
@@ -107,5 +106,7 @@
           icon-size = 14;
           spacing = 1;
         };
+      };
+    };
   };
 }
