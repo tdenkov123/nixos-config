@@ -12,7 +12,6 @@
     chromium
     spotify
     spotifywm
-    your_spotify
     qbittorrent
     wireshark
     telegram-desktop
