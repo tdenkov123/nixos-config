@@ -1,9 +1,9 @@
-{ pkgs, ...}: {
+{ pkgs, user, ...}: {
   programs.zsh.enable = true;
   
   users = {
     defaultUserShell = pkgs.zsh;
-    users.tdenkov = {
+    users.${user} = {
       isNormalUser = true;
       extraGroups = [ "wheel" "networkmanager" "input" ];
     };
