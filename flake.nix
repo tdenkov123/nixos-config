@@ -22,24 +22,30 @@
     let
       system = "x86_64-linux";
       homeStateVersion = "25.05";
-      hostName = "nixxx";
       user = "tdenkov";
+      hostName = "nixxx";
       unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
+
+      mkHost = hostName: extraModules: nixpkgs.lib.nixosSystem {
+        specialArgs = {
+          pkgs-stable = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          inherit inputs system homeStateVersion hostName user unstablePkgs;
+        };
+        modules = [
+          ./configuration.nix
+          stylix.nixosModules.stylix
+        ] ++ extraModules;
+      };
     in {
 
-    nixosConfigurations.${hostName} = nixpkgs.lib.nixosSystem {
-      specialArgs = {
-        pkgs-stable = import nixpkgs {
-          inherit system;
-          config.allowUnfree = true;
-        };
-        inherit inputs system homeStateVersion hostName user unstablePkgs;
-      };
-      modules = [
-        ./configuration.nix
-        stylix.nixosModules.stylix
-      ];
-    };
+    # VM host
+    nixosConfigurations.nixxx = mkHost "nixxx" [ ./devices/vm.nix ];
+
+    # PC host
+    nixosConfigurations.desktop = mkHost "desktop" [ ./devices/pc.nix ];
 
     homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
       pkgs = nixpkgs.legacyPackages.${system};
