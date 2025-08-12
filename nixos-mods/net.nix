@@ -28,7 +28,7 @@
     enable = true;
     params = [
       # --filter-udp=443 --hostlist="%LIST_PATH%" --dpi-desync=fake --dpi-desync-repeats=6 --dpi-desync-fake-quic="%BIN%quic_initial_www_google_com.bin" --new
-      "--filter-udp=443"
+      "--filter-udp=443"            
       "--hostlist=${zapretListUltimate}"
       "--dpi-desync=fake"
       "--dpi-desync-repeats=6"
