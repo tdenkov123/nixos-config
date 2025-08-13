@@ -20,6 +20,7 @@
     gparted
     obsidian
     nekoray
+    woeusb
 
     # Development
     gcc
@@ -68,6 +69,8 @@
     bat
     lazygit
     tetris
+    efibootmgr
+    os-prober
     
     # GUI utils
     feh
