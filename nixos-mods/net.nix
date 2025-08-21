@@ -18,8 +18,13 @@
     group = "root";
   };
   
-  services.resolved.enable = true;
-  services.resolved.fallbackDns = [ "8.8.8.8" "1.1.1.1" ];
+  networking.nameservers = [ "83.220.169.155#dns.comss.one" "212.109.195.93#dns.comss.one" ];
+  services.resolved = {
+    enable = true;
+    dnsovertls = "true";
+    llmnr = "true";
+    fallbackDns = [ "83.220.169.155#dns.comss.one" "212.109.195.93#dns.comss.one" ];
+  };
 
   services.zapret = let
     zapretListUltimate = ./zapret/lists/list-ultimate.txt;
