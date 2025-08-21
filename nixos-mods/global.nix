@@ -6,7 +6,6 @@
     ./environment.nix
     ./greetd.nix
     ./hyprland.nix
-    #./mime.nix
     ./net.nix
     ./user.nix
   ];
