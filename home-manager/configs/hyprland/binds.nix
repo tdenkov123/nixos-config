@@ -1,7 +1,6 @@
 { pkgs, ... }: {
   wayland.windowManager.hyprland.settings = {
     bind = [
-      "$mainMod,       SPACE, exec, hyprctl switchxkblayout keychron--keychron-link--keyboard next"
       "$mainMod,       Q, exec, $terminal"
       "$mainMod,       C, killactive,"
       "$mainMod SHIFT, L, exit,"
