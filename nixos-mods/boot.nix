@@ -1,14 +1,8 @@
-{
-  boot.loader = {
-    efi = {
-      canTouchEfiVariables = true;
-      efiSysMountPoint = "/boot";
-    };
-    grub = {
-      enable = true;
-      efiSupport = true;
-      device = "nodev";
-      useOSProber = true;
-    };
-  };
+{ pkgs, lib, ... }: {
+  boot.loader.systemd-boot.enable = true;
+  boot.loader.efi.canTouchEfiVariables = true;
+  environment.systemPackages = [
+    pkgs.efibootmgr
+    pkgs.sbctl
+  ];
 }
