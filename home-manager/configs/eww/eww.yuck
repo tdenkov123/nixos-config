@@ -1,6 +1,6 @@
-;; Eww Quick Settings - GNOME Style
+;; Eww Quick Settings - Clean Dropdown Style
 (defpoll wifi_status :interval "5s" "nmcli radio wifi")
-(defpoll wifi_ssid :interval "5s" "nmcli -t -f active,ssid dev wifi | awk -F: '$1==\"yes\"{print $2; exit}'")
+(defpoll wifi_ssid :interval "5s" "nmcli -t -f active,ssid dev wifi | awk -F: '$1==\"yes\"{print $2; exit}' || echo 'Disconnected'")
 (defpoll bt_status :interval "5s" "bluetoothctl show | awk '/Powered:/ {print $2}'")
 (defpoll vpn_status :interval "5s" "bash -c 'if nmcli -t -f TYPE connection show --active | grep -q ^vpn$; then echo on; else echo off; fi'")
 (defpoll volume :interval "2s" "wpctl get-volume @DEFAULT_AUDIO_SINK@ | awk '{print int($2*100)}'")
@@ -8,76 +8,79 @@
 
 (defwindow quicksettings
   :monitor 0
-  :geometry (geometry :x "-16" :y "45" :width 380 :height 480 :anchor "top right")
-  :stacking "fg"
+  :geometry (geometry :x "-10" :y "45" :width 320 :height 400 :anchor "top right")
+  :stacking "overlay"
   :exclusive false
-  (box :class "qs-container" :orientation "vertical" :spacing 0
-    ;; Header with close button
-    (box :class "qs-header" :orientation "horizontal"
-      (label :class "qs-title" :text "Quick Settings" :halign "start" :hexpand true)
-      (button :class "qs-close-btn" :onclick "eww close quicksettings" ""))
-    
-    ;; Main toggle grid
-    (box :class "qs-main-grid" :orientation "vertical" :spacing 12
-      ;; Top row - large tiles
-      (box :class "qs-row" :orientation "horizontal" :spacing 12
-        (button :class "qs-tile qs-tile-large ${wifi_status == "enabled" ? "active" : ""}" 
-                :onclick "~/.local/bin/qs-wifi-toggle"
-          (box :orientation "vertical" :spacing 8
-            (box :orientation "horizontal" :spacing 8 :valign "start"
-              (label :class "qs-icon" :text "")
-              (box :orientation "vertical" :halign "start" :spacing 2
-                (label :class "qs-tile-title" :text "WiFi" :halign "start")
-                (label :class "qs-tile-subtitle" :text "${wifi_ssid ?: "Disconnected"}" :halign "start")))
-            (box))) ; spacer
-        
-        (button :class "qs-tile qs-tile-large ${bt_status == "yes" ? "active" : ""}"
-                :onclick "~/.local/bin/qs-bt-toggle"
-          (box :orientation "vertical" :spacing 8
-            (box :orientation "horizontal" :spacing 8 :valign "start"
-              (label :class "qs-icon" :text "")
-              (box :orientation "vertical" :halign "start" :spacing 2
-                (label :class "qs-tile-title" :text "Bluetooth" :halign "start")
-                (label :class "qs-tile-subtitle" :text "${bt_status == "yes" ? "On" : "Off"}" :halign "start")))
-            (box))))
+  :focusable false
+  :wm-ignore false
+  (qs-panel))
+
+;; Quick Settings Panel Widget
+(defwidget qs-panel []
+  (eventbox :onhoverlost "eww close quicksettings"
+    (box :class "qs-container" :orientation "vertical" :spacing 15
+      ;; Header with network info
+      (box :class "qs-header" :orientation "vertical" :spacing 5
+        (box :orientation "horizontal"
+          (label :class "qs-title" :text "Quick Settings" :halign "start" :hexpand true)
+          (button :class "qs-close-btn" :onclick "eww close quicksettings" "✕"))
+        (label :class "qs-network-info" :text "${wifi_ssid}" :halign "start"))
       
-      ;; Second row - smaller tiles  
-      (box :class "qs-row" :orientation "horizontal" :spacing 12
-        (button :class "qs-tile qs-tile-small ${vpn_status == "on" ? "active" : ""}"
-                :onclick "~/.local/bin/qs-vpn-toggle"
-          (box :orientation "vertical" :spacing 4 :valign "center"
-            (label :class "qs-icon-small" :text "")
-            (label :class "qs-tile-label" :text "VPN")))
+      ;; Main control grid
+      (box :class "qs-controls" :orientation "vertical" :spacing 10
+        ;; Top row - main toggles
+        (box :orientation "horizontal" :spacing 10
+          (button :class "qs-control ${wifi_status == "enabled" ? "active" : ""}" 
+                  :onclick "~/.local/bin/qs-wifi-toggle"
+            (box :orientation "vertical" :spacing 5 :halign "center"
+              (label :class "qs-control-icon" :text "📶")
+              (label :class "qs-control-label" :text "WiFi")))
+          
+          (button :class "qs-control ${bt_status == "yes" ? "active" : ""}"
+                  :onclick "~/.local/bin/qs-bt-toggle"
+            (box :orientation "vertical" :spacing 5 :halign "center"
+              (label :class "qs-control-icon" :text "🔵")
+              (label :class "qs-control-label" :text "Bluetooth")))
+          
+          (button :class "qs-control ${vpn_status == "on" ? "active" : ""}"
+                  :onclick "~/.local/bin/qs-vpn-toggle"
+            (box :orientation "vertical" :spacing 5 :halign "center"
+              (label :class "qs-control-icon" :text "🔒")
+              (label :class "qs-control-label" :text "VPN"))))
         
-        (button :class "qs-tile qs-tile-small" :onclick "~/.local/bin/qs-airplane-toggle"
-          (box :orientation "vertical" :spacing 4 :valign "center"
-            (label :class "qs-icon-small" :text "✈")
-            (label :class "qs-tile-label" :text "Airplane")))
-        
-        (button :class "qs-tile qs-tile-small" :onclick "swaync-client -t"
-          (box :orientation "vertical" :spacing 4 :valign "center"
-            (label :class "qs-icon-small" :text "")
-            (label :class "qs-tile-label" :text "DND"))))
+        ;; Bottom row - additional controls
+        (box :orientation "horizontal" :spacing 10
+          (button :class "qs-control" :onclick "~/.local/bin/qs-airplane-toggle"
+            (box :orientation "vertical" :spacing 5 :halign "center"
+              (label :class "qs-control-icon" :text "✈️")
+              (label :class "qs-control-label" :text "Airplane")))
+          
+          (button :class "qs-control" :onclick "swaync-client -t"
+            (box :orientation "vertical" :spacing 5 :halign "center"
+              (label :class "qs-control-icon" :text "🔔")
+              (label :class "qs-control-label" :text "DND")))
+          
+          (button :class "qs-control" :onclick "systemctl --user restart pipewire"
+            (box :orientation "vertical" :spacing 5 :halign "center"
+              (label :class "qs-control-icon" :text "🔄")
+              (label :class "qs-control-label" :text "Restart")))))
       
       ;; Sliders section
-      (box :class "qs-sliders" :orientation "vertical" :spacing 16
-        ;; Volume slider
-        (box :class "qs-slider-container" :orientation "vertical" :spacing 8
+      (box :class "qs-sliders" :orientation "vertical" :spacing 15
+        ;; Volume control
+        (box :orientation "vertical" :spacing 8
           (box :orientation "horizontal" :spacing 8
-            (label :class "qs-slider-icon" :text "")
-            (label :class "qs-slider-label" :text "Sound"))
-          (scale :class "qs-slider" :orientation "horizontal" :min 0 :max 100 :value volume 
+            (label :class "qs-slider-icon" :text "🔊")
+            (label :class "qs-slider-label" :text "Volume")
+            (label :class "qs-slider-value" :text "${volume}%" :halign "end" :hexpand true))
+          (scale :class "qs-slider" :min 0 :max 100 :value volume 
                  :onchange "wpctl set-volume -l 1 @DEFAULT_AUDIO_SINK@ {}%"))
         
-        ;; Brightness slider  
-        (box :class "qs-slider-container" :orientation "vertical" :spacing 8
+        ;; Brightness control
+        (box :orientation "vertical" :spacing 8
           (box :orientation "horizontal" :spacing 8
-            (label :class "qs-slider-icon" :text "")
-            (label :class "qs-slider-label" :text "Brightness"))
-          (scale :class "qs-slider" :orientation "horizontal" :min 0 :max 100 :value brightness
-                 :onchange "~/.local/bin/qs-brightness-set {}")))
-      
-      ;; Media player placeholder (like in screenshot)
-      (box :class "qs-media-container" :orientation "vertical"
-        (box :class "qs-media-header" :orientation "horizontal"
-          (label :class "qs-media-title" :text "No media playing" :halign "start" :hexpand true))))))
+            (label :class "qs-slider-icon" :text "☀️")
+            (label :class "qs-slider-label" :text "Brightness")
+            (label :class "qs-slider-value" :text "${brightness}%" :halign "end" :hexpand true))
+          (scale :class "qs-slider" :min 0 :max 100 :value brightness
+                 :onchange "~/.local/bin/qs-brightness-set {}")))))))

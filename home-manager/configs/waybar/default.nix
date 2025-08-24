@@ -35,9 +35,8 @@
         };
 
         "custom/qs" = {
-          format = ""; 
+          format = "⚙️"; 
           tooltip = "Quick Settings"; 
-          exec = "echo QS"; 
           on-click = "~/.local/bin/qs-eww-toggle"; 
         };
 

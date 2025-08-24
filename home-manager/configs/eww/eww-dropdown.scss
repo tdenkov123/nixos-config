@@ -1,0 +1,134 @@
+/* Eww Quick Settings - Clean Dropdown Style */
+* {
+  all: unset;
+  font-family: "JetBrains Mono", monospace;
+}
+
+/* Main container styling */
+.qs-container {
+  background: #1E222A;
+  border: 2px solid #80A0C0;
+  border-radius: 0px;
+  padding: 20px;
+  margin: 0;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+/* Header section */
+.qs-header {
+  padding-bottom: 15px;
+  border-bottom: 1px solid rgba(128, 160, 192, 0.3);
+  margin-bottom: 15px;
+}
+
+.qs-title {
+  font-size: 16px;
+  font-weight: bold;
+  color: #ECEFF4;
+}
+
+.qs-network-info {
+  font-size: 12px;
+  color: #88C0D0;
+  margin-top: 5px;
+}
+
+.qs-close-btn {
+  background: transparent;
+  color: #88C0D0;
+  font-size: 14px;
+  padding: 2px 6px;
+  border-radius: 3px;
+  transition: all 0.2s ease;
+}
+
+.qs-close-btn:hover {
+  background: rgba(136, 192, 208, 0.2);
+}
+
+/* Control buttons grid */
+.qs-controls {
+  margin-bottom: 20px;
+}
+
+.qs-control {
+  background: rgba(68, 71, 90, 0.6);
+  border: 1px solid rgba(128, 160, 192, 0.2);
+  border-radius: 0px;
+  padding: 15px 10px;
+  min-width: 80px;
+  min-height: 70px;
+  transition: all 0.2s ease;
+}
+
+.qs-control:hover {
+  background: rgba(136, 192, 208, 0.1);
+  border-color: rgba(128, 160, 192, 0.4);
+}
+
+.qs-control.active {
+  background: rgba(136, 192, 208, 0.2);
+  border-color: #80A0C0;
+}
+
+.qs-control-icon {
+  font-size: 18px;
+  margin-bottom: 8px;
+}
+
+.qs-control-label {
+  font-size: 11px;
+  color: #ECEFF4;
+  font-weight: 500;
+}
+
+/* Sliders section */
+.qs-sliders {
+  border-top: 1px solid rgba(128, 160, 192, 0.3);
+  padding-top: 15px;
+}
+
+.qs-slider-icon {
+  font-size: 14px;
+  color: #88C0D0;
+}
+
+.qs-slider-label {
+  font-size: 12px;
+  color: #ECEFF4;
+  font-weight: 500;
+}
+
+.qs-slider-value {
+  font-size: 11px;
+  color: #88C0D0;
+  font-weight: bold;
+}
+
+.qs-slider {
+  background: rgba(68, 71, 90, 0.8);
+  border-radius: 0px;
+  min-height: 6px;
+  margin: 5px 0;
+}
+
+.qs-slider trough {
+  background: rgba(68, 71, 90, 0.8);
+  border-radius: 0px;
+  min-height: 6px;
+}
+
+.qs-slider highlight {
+  background: linear-gradient(90deg, #88C0D0 0%, #81A1C1 50%, #5E81AC 100%);
+  border-radius: 0px;
+  min-height: 6px;
+}
+
+.qs-slider slider {
+  background: #ECEFF4;
+  border-radius: 0px;
+  min-width: 14px;
+  min-height: 14px;
+  margin: -4px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+}

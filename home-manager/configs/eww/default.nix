@@ -1,8 +1,8 @@
 { pkgs, ... }: {
   home.packages = [ pkgs.eww ];
 
-  home.file.".config/eww/eww.yuck".source = ./eww/eww.yuck;
-  home.file.".config/eww/eww.scss".source = ./eww/eww.scss;
+  home.file.".config/eww/eww.yuck".source = ./eww.yuck;
+  home.file.".config/eww/eww.scss".source = ./eww-dropdown.scss;
 
   # Scripts
   home.file.".local/bin/qs-eww-toggle" = {
