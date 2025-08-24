@@ -8,9 +8,9 @@
         layer = "top";
         position = "top";
         height = 33;
-        modules-left = ["hyprland/workspaces" "cpu" "custom/cpu-freq" "memory" "custom/qs"];
+        modules-left = ["hyprland/workspaces" "cpu" "custom/cpu-freq" "memory"];
         modules-center = ["hyprland/window"];
-        modules-right = [ "tray" "hyprland/language" "custom/weather"  "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "hyprland/language" "custom/weather"  "pulseaudio" "battery" "clock" "custom/qs" ];
         "hyprland/workspaces" = {
           disable-scroll = true;
           show-special = true;
@@ -35,7 +35,7 @@
         };
 
         "custom/qs" = {
-          format = "󰍜"; 
+          format = ""; 
           tooltip = "Quick Settings"; 
           exec = "echo QS"; 
           on-click = "~/.local/bin/qs-eww-toggle"; 

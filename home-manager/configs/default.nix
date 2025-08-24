@@ -5,9 +5,9 @@
     ./zsh.nix
     ./stylix.nix
     ./qbittorrent.nix
+    ./eww
     ./hyprland
     ./wofi
     ./waybar
-    ./eww.nix
   ];
 }
