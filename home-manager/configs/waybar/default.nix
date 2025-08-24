@@ -10,7 +10,7 @@
         height = 33;
         modules-left = ["hyprland/workspaces" "cpu" "custom/cpu-freq" "memory"];
         modules-center = ["hyprland/window"];
-        modules-right = [ "tray" "hyprland/language" "custom/weather"  "pulseaudio" "battery" "clock" ];
+        modules-right = [ "tray" "hyprland/language" "custom/weather"  "pulseaudio" "battery" "clock" "custom/qs"];
         "hyprland/workspaces" = {
           disable-scroll = true;
           show-special = true;
@@ -32,6 +32,13 @@
           persistent-workspaces = {
             "*" = 8;
           };
+        };
+
+        "custom/qs" = {
+          format = "󰍜"; 
+          tooltip = "Quick Settings"; 
+          exec = "echo QS"; 
+          on-click = "eww open --toggle quicksettings"; 
         };
 
         "hyprland/language" = {

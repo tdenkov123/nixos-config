@@ -8,5 +8,6 @@
     ./hyprland
     ./wofi
     ./waybar
+    ./eww.nix
   ];
 }
