@@ -14,33 +14,11 @@
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.4);
 }
 
-.qs-header {
+.qs-controls {
   margin-bottom: 15px;
 }
 
-.qs-title {
-  font-size: 16px;
-  font-weight: bold;
-  color: #f8f8f2;
-}
-
-.qs-close-btn {
-  background: rgba(255, 85, 85, 0.2);
-  border-radius: 6px;
-  padding: 4px 8px;
-  color: #ff5555;
-  font-size: 14px;
-}
-
-.qs-close-btn:hover {
-  background: rgba(255, 85, 85, 0.3);
-}
-
-.qs-grid {
-  margin-bottom: 15px;
-}
-
-.qs-btn {
+.qs-control {
   background: rgba(68, 71, 90, 0.8);
   border-radius: 8px;
   padding: 15px;
@@ -50,22 +28,22 @@
   transition: all 0.2s ease;
 }
 
-.qs-btn:hover {
+.qs-control:hover {
   background: rgba(68, 71, 90, 1);
   border-color: rgba(255, 255, 255, 0.1);
 }
 
-.qs-btn.active {
+.qs-control.active {
   background: rgba(139, 233, 253, 0.2);
   border-color: rgba(139, 233, 253, 0.3);
 }
 
-.qs-icon {
+.qs-control-icon {
   font-size: 20px;
   margin-bottom: 5px;
 }
 
-.qs-label {
+.qs-control-label {
   font-size: 12px;
   color: #f8f8f2;
   font-weight: 500;
@@ -73,6 +51,23 @@
 
 .qs-sliders {
   margin-top: 10px;
+}
+
+.qs-slider-icon {
+  font-size: 14px;
+  color: #8be9fd;
+}
+
+.qs-slider-label {
+  font-size: 12px;
+  color: #f8f8f2;
+  font-weight: 500;
+}
+
+.qs-slider-value {
+  font-size: 11px;
+  color: #8be9fd;
+  font-weight: bold;
 }
 
 .qs-slider {

@@ -19,13 +19,6 @@
 (defwidget qs-panel []
   (eventbox :onhoverlost "eww close quicksettings"
     (box :class "qs-container" :orientation "vertical" :spacing 15
-      ;; Header with network info
-      (box :class "qs-header" :orientation "vertical" :spacing 5
-        (box :orientation "horizontal"
-          (label :class "qs-title" :text "Quick Settings" :halign "start" :hexpand true)
-          (button :class "qs-close-btn" :onclick "eww close quicksettings" "✕"))
-        (label :class "qs-network-info" :text "${wifi_ssid}" :halign "start"))
-      
       ;; Main control grid
       (box :class "qs-controls" :orientation "vertical" :spacing 10
         ;; Top row - main toggles
@@ -83,4 +76,4 @@
             (label :class "qs-slider-label" :text "Brightness")
             (label :class "qs-slider-value" :text "${brightness}%" :halign "end" :hexpand true))
           (scale :class "qs-slider" :min 0 :max 100 :value brightness
-                 :onchange "~/.local/bin/qs-brightness-set {}")))))))
+                 :onchange "~/.local/bin/qs-brightness-set {}"))))))
