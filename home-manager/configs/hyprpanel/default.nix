@@ -1,7 +1,7 @@
 { config, user, ...}: let
   transparentButtons = false;
 
-  accent = "#a76a00ff";
+  accent = "#74592aff";
   accent-alt = "#5d5d5dff";
   background = "#342f2fff";
   background-alt = "#292320ff";
@@ -42,7 +42,6 @@ in {
             "systray"
             "volume"
             "bluetooth"
-            "battery"
             "network"
             "clock"
             "notifications"
