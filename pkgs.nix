@@ -34,7 +34,10 @@
     vscode
     sublime4
     neovim
-    python314
+    (python313.withPackages (ps: with ps; [ pip setuptools wheel pyqt5 ]))
+    qt5.qtwayland
+    qt5.qtbase
+    qt5.qtdeclarative
     jupyter
     ripgrep
     silicon
@@ -71,12 +74,14 @@
     tetris
     efibootmgr
     os-prober
+    mosquitto
+    appimage-run
     
     # GUI utils
     feh
     imv
     udisks
-    #mako
+    opcua-client-gui
 
     # Sound
     pipewire
@@ -126,7 +131,29 @@
   ];
 
   programs.nekoray.tunMode.enable = true;
-  
+  programs.nix-ld.enable = true;
+  programs.nix-ld.libraries = with pkgs; [
+    fuse
+    fuse3
+    libGL
+    qt5.qtbase
+    qt5.qtwayland
+    xorg.libX11
+    xorg.libxcb
+    xorg.libXi
+    xorg.libXrender
+    xorg.libXext
+    openssl
+    zlib
+    stdenv.cc.cc.lib
+    glibc
+    libxml2
+    curl
+    libuuid
+    pcre
+    pcre2
+  ];
+
   services.udev.extraRules = ''
     KERNEL=="tun", NAME="net/%k", MODE="0666"
   '';
