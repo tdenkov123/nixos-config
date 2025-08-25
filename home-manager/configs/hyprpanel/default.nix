@@ -1,14 +1,14 @@
 { config, user, ...}: let
   transparentButtons = false;
 
-  accent = "#458588";
-  accent-alt = "#665c54";
-  background = "#282828";
-  background-alt = "#3c3836";
-  foreground = "#ebdbb2";
+  accent = "#a76a00ff";
+  accent-alt = "#5d5d5dff";
+  background = "#342f2fff";
+  background-alt = "#292320ff";
+  foreground = "#c1b79eff";
   foregroundOnWallpaper = "#ffffff";
-  font = "Noto Serif";
-  fontSizeForHyprpanel = "11px";
+  font = "JetBrainsMono Nerd Font";
+  fontSizeForHyprpanel = "13px";
 
   rounding = 15;
   border-size = 5;
@@ -22,7 +22,7 @@
 
   notificationOpacity = 90;
 
-  location = "Moscow, Russia";
+  location = "Europe/Moscow";
 
   homeDir = "/home/${user}";
 
