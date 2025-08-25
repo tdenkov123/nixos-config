@@ -16,7 +16,7 @@
     wireshark
     telegram-desktop
     mpv
-    vesktop
+    discord
     gparted
     obsidian
     nekoray
