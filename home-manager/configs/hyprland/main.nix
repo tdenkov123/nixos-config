@@ -19,8 +19,7 @@
       "$menu" = "wofi";
 
       exec-once = [
-        "eww daemon"
-        "waybar"
+        "hyprpanel"
         "wl-paste --type text --watch cliphist store"
         "wl-paste --type image --watch cliphist store"
       ];

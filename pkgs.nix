@@ -105,8 +105,6 @@
     xwayland
     seatd
     xdg-desktop-portal-hyprland
-    polybar
-    (unstablePkgs.waybar)
     rofi-wayland
     wofi
     wl-clipboard

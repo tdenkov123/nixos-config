@@ -9,12 +9,10 @@
       "$mainMod,       R, exec, $menu --show drun"
       "$mainMod,       J, togglesplit,"
       "$mainMod,       V, exec, cliphist list | $menu --dmenu | cliphist decode | wl-copy"
-      "$mainMod,       B, exec, pkill -SIGUSR2 waybar"
-      "$mainMod SHIFT, B, exec, pkill -SIGUSR1 waybar"
       "$mainMod,       L, exec, pidof hyprlock || hyprlock"
       "$mainMod,       P, exec, hyprpicker -an"
       "$mainMod,       N, exec, swaync-client -t"
-      ",Print,            exec, grimblast --notify --freeze copysave area"
+      "$mainMod SHIFT, S, exec, grimblast --notify --freeze copysave area"
 
       # Moving focus
       "$mainMod, left, movefocus, l"
