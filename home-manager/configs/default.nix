@@ -5,9 +5,10 @@
     ./zsh.nix
     ./stylix.nix
     ./qbittorrent.nix
-    ./eww
+    # ./eww
     ./hyprland
     ./wofi
-    ./waybar
+    # ./waybar
+    ./hyprpanel
   ];
 }

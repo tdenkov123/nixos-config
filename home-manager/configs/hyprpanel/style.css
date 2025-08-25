@@ -1,0 +1,112 @@
+* {
+    all: unset;
+    font-family: "JetBrainsMono Nerd Font", "Font Awesome 6 Free", sans-serif;
+    font-size: 12px;
+}
+
+window#hyprpanel {
+    background-color: rgba(30, 30, 46, 0.95);
+    color: #cdd6f4;
+    border-radius: 8px;
+    border: 1px solid rgba(108, 112, 134, 0.3);
+}
+
+.module {
+    padding: 0 8px;
+    margin: 0 2px;
+}
+
+.workspace {
+    padding: 0 4px;
+}
+
+.workspace.active {
+    background-color: rgba(137, 180, 250, 0.3);
+    border-radius: 4px;
+}
+
+.cpu, .memory, .battery, .clock {
+    padding: 0 6px;
+}
+
+.tray {
+    padding: 0 4px;
+}
+
+.quick-settings {
+    padding: 0 8px;
+    background-color: rgba(137, 180, 250, 0.2);
+    border-radius: 4px;
+    margin: 0 4px;
+}
+
+.quick-settings:hover {
+    background-color: rgba(137, 180, 250, 0.4);
+}
+
+.quick-settings-panel {
+    background-color: rgba(30, 30, 46, 0.98);
+    border-radius: 8px;
+    border: 1px solid rgba(108, 112, 134, 0.4);
+    padding: 16px;
+}
+
+.quick-settings-control {
+    background-color: rgba(108, 112, 134, 0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 4px;
+}
+
+.quick-settings-control:hover {
+    background-color: rgba(137, 180, 250, 0.3);
+}
+
+.quick-settings-control.active {
+    background-color: rgba(166, 227, 161, 0.3);
+}
+
+.quick-settings-slider {
+    background-color: rgba(108, 112, 134, 0.2);
+    border-radius: 6px;
+    padding: 8px 12px;
+    margin: 4px;
+}
+
+.quick-settings-slider scale trough {
+    background-color: rgba(108, 112, 134, 0.3);
+    border-radius: 4px;
+    min-height: 8px;
+}
+
+.quick-settings-slider scale trough highlight {
+    background-color: rgba(137, 180, 250, 0.8);
+    border-radius: 4px;
+}
+
+.weather {
+    color: #a6e3a1;
+    padding: 0 6px;
+}
+
+.battery.warning {
+    color: #f9e2af;
+}
+
+.battery.critical {
+    color: #f38ba8;
+}
+
+.battery.charging {
+    color: #a6e3a1;
+}
+
+.pulseaudio.muted {
+    color: #9399b2;
+}
+
+.language {
+    padding: 0 6px;
+    background-color: rgba(137, 180, 250, 0.2);
+    border-radius: 4px;
+}

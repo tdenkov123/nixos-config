@@ -7,6 +7,5 @@
     username = user;
     homeDirectory = "/home/${user}";
     stateVersion = homeStateVersion;
-
   };
 }
