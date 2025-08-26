@@ -1,11 +1,11 @@
 { config, user, ...}: let
   transparentButtons = false;
 
-  accent = "#74592aff";
-  accent-alt = "#5d5d5dff";
-  background = "#342f2fff";
-  background-alt = "#292320ff";
-  foreground = "#c1b79eff";
+  accent = "#90b9d3";
+  accent-alt = "#4e7ba7ff";
+  background = "#3f3f3fff";
+  background-alt = "#3f3f3fff";
+  foreground = "#7f99b3ff";
   foregroundOnWallpaper = "#ffffff";
   font = "JetBrainsMono Nerd Font";
   fontSizeForHyprpanel = "13px";
@@ -161,26 +161,15 @@ in {
       menus.dashboard.shortcuts.right.shortcut1.tooltip = "Color Picker";
 
       menus.dashboard.shortcuts.right.shortcut3.icon = "󰄀";
-      menus.dashboard.shortcuts.right.shortcut3.command = "screenshot region swappy";
+      menus.dashboard.shortcuts.right.shortcut3.command = "grimblast --notify --freeze copysave area";
       menus.dashboard.shortcuts.right.shortcut3.tooltip = "Screenshot";
 
       menus.dashboard.directories.left.directory1.label = "     Home";
-      menus.dashboard.directories.left.directory1.command = "xdg-open ${homeDir}";
+      menus.dashboard.directories.left.directory1.command = "thunar ${homeDir}";
 
-      menus.dashboard.directories.left.directory2.label = "󰲂     Documents";
-      menus.dashboard.directories.left.directory2.command = "xdg-open ${homeDir}/Documents";
 
-      menus.dashboard.directories.left.directory3.label = "󰉍     Downloads";
-      menus.dashboard.directories.left.directory3.command = "xdg-open ${homeDir}/Downloads";
-
-      menus.dashboard.directories.right.directory1.label = "     Desktop";
-      menus.dashboard.directories.right.directory1.command = "xdg-open ${homeDir}/Desktop";
-
-      menus.dashboard.directories.right.directory2.label = "     Videos";
-      menus.dashboard.directories.right.directory2.command = "xdg-open ${homeDir}/Videos";
-
-      menus.dashboard.directories.right.directory3.label = "󰉏     Pictures";
-      menus.dashboard.directories.right.directory3.command = "xdg-open ${homeDir}/Pictures";
+      menus.dashboard.directories.right.directory1.label = "󰉍     Downloads";
+      menus.dashboard.directories.right.directory1.command = "thunar ${homeDir}/Downloads";
 
       menus.power.lowBatteryNotification = true;
 
