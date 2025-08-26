@@ -32,6 +32,8 @@
     options = "--delete-older-than 7d";
   };
 
+  services.fstrim.enable = true;
+
   boot.loader.systemd-boot.configurationLimit = 5;
 
   system.stateVersion = homeStateVersion;
