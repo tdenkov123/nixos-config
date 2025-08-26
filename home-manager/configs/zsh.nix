@@ -9,7 +9,7 @@
         c = "clear";
         ls = "eza -la";
         up = "sudo nix flake update && sudo nixos-rebuild switch --flake /home/${user}/nixos-config --upgrade";
-        rebuild-vm = "sudo nixos-rebuild switch --flake /home/${user}/nixos-config#nixxx";
+        rebuild-vm = "sudo nixos-rebuild switch --flake /home/${user}/nixos-config#vm";
         rebuild-desktop = "sudo nixos-rebuild switch --flake /home/${user}/nixos-config#desktop";
         homerebuild = "home-manager switch --flake /home/${user}/nixos-config";
         poff = "poweroff";

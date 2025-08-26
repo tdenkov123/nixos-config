@@ -26,13 +26,14 @@
       hostName = "nixxx";
       unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 
-      mkHost = hostName: extraModules: nixpkgs.lib.nixosSystem {
+      mkHost = host: extraModules: nixpkgs.lib.nixosSystem {
         specialArgs = {
           pkgs-stable = import nixpkgs {
             inherit system;
             config.allowUnfree = true;
           };
-          inherit inputs system homeStateVersion hostName user unstablePkgs;
+          hostName = host;
+          inherit inputs system homeStateVersion user unstablePkgs;
         };
         modules = [
           ./configuration.nix
@@ -42,17 +43,28 @@
     in {
 
     # VM host
-    nixosConfigurations.nixxx = mkHost "nixxx" [ ./devices/vm.nix ];
+    nixosConfigurations.nixxx = mkHost "vm" [ ./devices/vm.nix ];
 
     # PC host
     nixosConfigurations.desktop = mkHost "desktop" [ ./devices/pc.nix ];
 
-    homeConfigurations.${user} = home-manager.lib.homeManagerConfiguration {
-      pkgs = nixpkgs.legacyPackages.${system};
-      extraSpecialArgs = {
-        inherit user hostName homeStateVersion system inputs unstablePkgs;
+    homeConfigurations = {
+      "${user}@vm" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {
+          inherit user homeStateVersion system inputs unstablePkgs;
+          hostName = "vm";
+        };
+        modules = [ ./home-manager/home.nix ];
       };
-      modules = [ ./home-manager/home.nix ];
+      "${user}@desktop" = home-manager.lib.homeManagerConfiguration {
+        pkgs = nixpkgs.legacyPackages.${system};
+        extraSpecialArgs = {
+          inherit user homeStateVersion system inputs unstablePkgs;
+          hostName = "desktop";
+        };
+        modules = [ ./home-manager/home.nix ];
+      };
     };
   };
 }
