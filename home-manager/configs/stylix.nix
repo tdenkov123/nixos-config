@@ -19,10 +19,17 @@
     base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
 
     targets = {
+      alacritty.enable = true;
+      btop.enable = true;
+      fzf.enable = true;
+      gtk.enable = true;
+      hyprland.enable = true;
+      hyprlock.enable = true;
+      kitty.enable = true;
       neovim.enable = false;
-      wofi.enable = false;
-      hyprland.enable = false;
-      hyprlock.enable = false;
+      rofi.enable = true;
+      waybar.enable = true;
+      wofi.enable = true;
     };
 
     cursor = {

@@ -1,4 +1,4 @@
-{
+{ ... }: {
   wayland.windowManager.hyprland = {
     enable = true;
     systemd.enable = true;
@@ -29,9 +29,6 @@
         gaps_out = 4;
 
         border_size = 5;
-
-        "col.active_border" = "rgba(d65d0eff) rgba(98971aff) 45deg";
-        "col.inactive_border" = "rgba(3c3836ff)";
 
         resize_on_border = true;
 
