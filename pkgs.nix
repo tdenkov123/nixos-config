@@ -6,6 +6,17 @@
     ];
   };
 
+  # Games
+  programs.steam = {
+      enable = true;
+      remotePlay.openFirewall = true;
+      dedicatedServer.openFirewall = true;
+      localNetworkGameTransfers.openFirewall = true;
+      extraCompatPackages = [ pkgs.proton-ge-bin ];
+      gamescopeSession.enable = true;
+  };
+  programs.gamemode.enable = true;
+
   environment.systemPackages = with pkgs; [
     # Desktop
     audacity
@@ -129,6 +140,8 @@
   ];
 
   programs.nekoray.tunMode.enable = true;
+  programs.appimage.enable = true;
+  programs.appimage.binfmt = true;
   programs.nix-ld.enable = true;
   programs.nix-ld.libraries = with pkgs; [
     fuse
