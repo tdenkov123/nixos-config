@@ -96,7 +96,6 @@
 
     # Sound
     pipewire
-    pulseaudio
     pamixer
 
     # GPU
