@@ -5,8 +5,8 @@
     ./zsh.nix
     ./stylix.nix
     ./qbittorrent.nix
+    ./wofi.nix
     ./hyprland
-    ./wofi
     ./hyprpanel
   ];
 }

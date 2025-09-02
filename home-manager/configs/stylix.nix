@@ -14,22 +14,17 @@
   ];
 
   stylix = {
+    autoEnable = true;
     enable = true;
     polarity = "dark";
-    base16Scheme = "${pkgs.base16-schemes}/share/themes/gruvbox-dark-medium.yaml";
+    base16Scheme = ./../themes/custom-hyprpanel.yaml;
 
     targets = {
-      alacritty.enable = true;
-      btop.enable = true;
-      fzf.enable = true;
-      gtk.enable = true;
       hyprland.enable = true;
       hyprlock.enable = true;
+      wofi.enable = false;
+      gtk.enable = true;
       kitty.enable = true;
-      neovim.enable = false;
-      rofi.enable = true;
-      waybar.enable = true;
-      wofi.enable = true;
     };
 
     cursor = {
@@ -58,7 +53,7 @@
 
       sizes = {
         terminal = 13;
-        applications = 11;
+        applications = 13;
       };
     };
 

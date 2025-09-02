@@ -1,14 +1,14 @@
 { config, user, ...}: let
   transparentButtons = false;
 
-  accent = "#90b9d3";
-  accent-alt = "#4e7ba7ff";
-  background = "#3f3f3fff";
-  background-alt = "#3f3f3fff";
-  foreground = "#7f99b3ff";
-  foregroundOnWallpaper = "#ffffff";
-  font = "JetBrainsMono Nerd Font";
-  fontSizeForHyprpanel = "13px";
+  accent = "#${config.lib.stylix.colors.base0D}";
+  accent-alt = "#${config.lib.stylix.colors.base03}";
+  background = "#${config.lib.stylix.colors.base00}";
+  background-alt = "#${config.lib.stylix.colors.base01}";
+  foreground = "#${config.lib.stylix.colors.base05}";
+  foregroundOnWallpaper = "#${config.lib.stylix.colors.base05}";
+  font = "${config.stylix.fonts.monospace.name}";
+  fontSizeForHyprpanel = "${toString config.stylix.fonts.sizes.applications}px";
 
   rounding = 15;
   border-size = 5;
@@ -27,9 +27,10 @@
   homeDir = "/home/${user}";
 
 in {
+  home.file.".config/hyprpanel/style.css".source = ./style.css;
+  
   programs.hyprpanel = {
     enable = true;
-
     settings = {
 
       bar.layouts = {
@@ -92,7 +93,7 @@ in {
       theme.bar.menus.shadow =
         if transparent
         then "0 0 0 0"
-        else "0px 0px 3px 1px #16161e";
+        else "0px 0px 3px 1px ${background}";
       theme.bar.buttons.style = "default";
       theme.bar.buttons.monochrome = true;
       theme.bar.menus.monochrome = true;
@@ -247,7 +248,7 @@ in {
       theme.notification.text = foreground;
       theme.notification.labelicon = accent;
       theme.notification.close_button.background = background-alt;
-      theme.notification.close_button.label = "#f38ba8";
+      theme.notification.close_button.label = "#${config.lib.stylix.colors.base08}";
     };
   };
 }
