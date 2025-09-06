@@ -1,7 +1,7 @@
 { pkgs, user, ... }: let
   tuigreet = "${pkgs.greetd.tuigreet}/bin/tuigreet";
   hyprland-session = "${pkgs.hyprland}/share/wayland-sessions";
-  gnome-session = "${pkgs.gnome-session}/share/wayland-sessions:${pkgs`.gnome-session}/share/xsessions";
+  gnome-session = "${pkgs.gnome-session}/share/wayland-sessions:${pkgs.gnome-session}/share/xsessions";
   all-sessions = "${hyprland-session}:${gnome-session}";
 in {
   services.greetd = {
