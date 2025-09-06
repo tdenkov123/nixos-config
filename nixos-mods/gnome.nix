@@ -4,7 +4,7 @@
     desktopManager.gnome.enable = true;
   };
   
-  services.xserver.displayManager.gdm.enable = false;
+  services.xserver.displayManager.gdm.enable = true;
 
   services.gnome = {
     gnome-keyring.enable = true;
@@ -12,6 +12,8 @@
   };
 
   environment.systemPackages = with pkgs; [
+    gnome-session
+    gnome-shell
     gnome-tweaks
     gnome-extension-manager
     dconf-editor
@@ -19,6 +21,10 @@
 
   environment.gnome.excludePackages = (with pkgs; [
     gnome-photos
+    gnome-maps
+    gnome-contacts
+    gnome-font-viewer
+    gnome-music
     gnome-tour
     cheese
     gnome-terminal

@@ -5,7 +5,7 @@
     ./boot.nix
     ./environment.nix
     ./gnome.nix
-    ./greetd.nix
+    # ./greetd.nix
     ./hyprland.nix
     ./net.nix
     ./user.nix
