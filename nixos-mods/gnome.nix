@@ -39,9 +39,5 @@
     atomix
   ]);
 
-  # services.xserver.displayManager.gdm.autoSuspend = false;
-  # services.xserver.displayManager.autoLogin.enable = true;
-  # services.xserver.displayManager.autoLogin.user = "tdenkov";
-
   services.udev.packages = with pkgs; [ gnome-settings-daemon ];
 }

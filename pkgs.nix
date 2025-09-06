@@ -32,6 +32,7 @@
     obsidian
     nekoray
     woeusb
+    thunderbird
 
     # Development
     gcc
