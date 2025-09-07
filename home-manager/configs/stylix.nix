@@ -25,6 +25,7 @@
       wofi.enable = false;
       gtk.enable = true;
       kitty.enable = true;
+      gnome.enable = true;
     };
 
     cursor = {
