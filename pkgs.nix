@@ -33,6 +33,7 @@
     nekoray
     woeusb
     thunderbird
+    libreoffice
 
     # Development
     gcc
