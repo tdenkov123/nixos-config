@@ -1,0 +1,38 @@
+{ pkgs, ... }: {
+  environment.systemPackages = with pkgs; [
+    alacritty
+    bottom
+    kitty
+    file
+    fastfetch
+    cpufetch
+    inxi
+    btop
+    tree
+    wget
+    git
+    htop
+    curl
+    zip
+    unzip
+    ffmpeg
+    lux
+    mediainfo
+    bluez
+    bluez-tools
+    openssl
+    brightnessctl
+    yt-dlp
+    eza
+    mc
+    yazi
+    bat
+    lazygit
+    tetris
+    efibootmgr
+    os-prober
+    mosquitto
+    appimage-run
+    woeusb
+  ];
+}

@@ -2,7 +2,7 @@
   imports = [
     ./hardware-configuration.nix
     ./nixos-mods/global.nix
-    ./pkgs.nix
+    ./packages/default.nix
   ];
 
   networking.hostName = hostName;
