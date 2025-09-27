@@ -26,7 +26,7 @@
 
       general = {
         gaps_in = 4;
-        gaps_out = 4;
+        gaps_out = 8;
 
         border_size = 5;
 
@@ -37,7 +37,7 @@
       };
 
       decoration = {
-        rounding = 15;
+        rounding = 0;
 
         active_opacity = 1.0;
         inactive_opacity = 1.0;
@@ -83,8 +83,6 @@
       };
 
       windowrulev2 = [
-        "bordersize 0, floating:0, onworkspace:w[t1]"
-
         "float,class:(mpv)|(imv)|(showmethekey-gtk)"
         "move 990 60,size 900 170,pin,noinitialfocus,class:(showmethekey-gtk)"
         "noborder,nofocus,class:(showmethekey-gtk)"
@@ -98,11 +96,6 @@
         "maxsize 1 1, class:^(xwaylandvideobridge)$"
         "noblur, class:^(xwaylandvideobridge)$"
         "nofocus, class:^(xwaylandvideobridge)$"
-      ];
-
-      workspace = [
-        "w[tv1], gapsout:0, gapsin:0"
-        "f[1], gapsout:0, gapsin:0"
       ];
     };
   };
