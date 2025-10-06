@@ -23,7 +23,6 @@
       system = "x86_64-linux";
       homeStateVersion = "25.05";
       user = "tdenkov";
-      hostName = "nixxx";
       unstablePkgs = import nixpkgs-unstable { inherit system; config.allowUnfree = true; };
 
       mkHost = host: extraModules: nixpkgs.lib.nixosSystem {
@@ -40,31 +39,32 @@
           stylix.nixosModules.stylix
         ] ++ extraModules;
       };
-    in {
+    in
+    {
 
-    # VM host
-    nixosConfigurations.nixxx = mkHost "vm" [ ./devices/vm.nix ];
+      # VM host
+      nixosConfigurations.nixxx = mkHost "vm" [ ./devices/vm.nix ];
 
-    # PC host
-    nixosConfigurations.desktop = mkHost "desktop" [ ./devices/pc.nix ];
+      # PC host
+      nixosConfigurations.desktop = mkHost "desktop" [ ./devices/desktop.nix ];
 
-    homeConfigurations = {
-      "${user}@vm" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit user homeStateVersion system inputs unstablePkgs;
-          hostName = "vm";
+      homeConfigurations = {
+        "${user}@vm" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit user homeStateVersion system inputs unstablePkgs;
+            hostName = "vm";
+          };
+          modules = [ ./home-manager/home.nix ];
         };
-        modules = [ ./home-manager/home.nix ];
-      };
-      "${user}@desktop" = home-manager.lib.homeManagerConfiguration {
-        pkgs = nixpkgs.legacyPackages.${system};
-        extraSpecialArgs = {
-          inherit user homeStateVersion system inputs unstablePkgs;
-          hostName = "desktop";
+        "${user}@desktop" = home-manager.lib.homeManagerConfiguration {
+          pkgs = nixpkgs.legacyPackages.${system};
+          extraSpecialArgs = {
+            inherit user homeStateVersion system inputs unstablePkgs;
+            hostName = "desktop";
+          };
+          modules = [ ./home-manager/home.nix ];
         };
-        modules = [ ./home-manager/home.nix ];
       };
     };
-  };
 }

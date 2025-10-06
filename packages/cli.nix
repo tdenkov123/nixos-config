@@ -34,5 +34,6 @@
     mosquitto
     appimage-run
     woeusb
+    nixpkgs-fmt
   ];
 }

@@ -1,5 +1,6 @@
 {
   imports = [
+    ./alacritty
     ./eza.nix
     ./git.nix
     ./zsh.nix
@@ -8,5 +9,6 @@
     ./wofi.nix
     ./hyprland
     ./hyprpanel
+    ./waybar
   ];
 }

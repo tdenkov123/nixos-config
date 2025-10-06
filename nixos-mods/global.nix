@@ -8,6 +8,7 @@
     # ./greetd.nix
     ./hyprland.nix
     ./net.nix
+    ./nix-ld.nix
     ./user.nix
   ];
 }

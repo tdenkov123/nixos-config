@@ -19,5 +19,9 @@
     ripgrep
     silicon
     opcua-client-gui
+    gtk3
+    gsettings-desktop-schemas
+    glib
+    go
   ];
 }

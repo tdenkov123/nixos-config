@@ -20,6 +20,7 @@
     base16Scheme = ./../themes/custom-hyprpanel.yaml;
 
     targets = {
+      waybar.enable = false;
       hyprland.enable = true;
       hyprlock.enable = true;
       wofi.enable = false;

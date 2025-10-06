@@ -126,7 +126,6 @@
     xfce.thunar
     greetd.tuigreet
     swaynotificationcenter
-    waybar
   ];
 
   fonts.packages = with pkgs; [
