@@ -10,7 +10,7 @@
     discord
     gparted
     obsidian
-    nekoray
+    throne
     thunderbird
     libreoffice
     feh

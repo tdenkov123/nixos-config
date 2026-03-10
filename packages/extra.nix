@@ -6,8 +6,6 @@
     ];
   };
 
-  programs.nekoray.tunMode.enable = true;
-
   services.udev.extraRules = ''
     KERNEL=="tun", NAME="net/%k", MODE="0666"
   '';
