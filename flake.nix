@@ -37,7 +37,7 @@
     {
 
       # VM host
-      nixosConfigurations.nixxx = mkHost "vm" [ ./devices/vm.nix ];
+      nixosConfigurations.vm = mkHost "vm" [ ./devices/vm.nix ];
 
       # PC host
       nixosConfigurations.desktop = mkHost "desktop" [ ./devices/desktop.nix ];
