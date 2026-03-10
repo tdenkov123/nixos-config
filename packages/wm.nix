@@ -11,7 +11,6 @@
     hyprpicker
     pavucontrol
     xfce.thunar
-    greetd.tuigreet
     swaynotificationcenter
   ];
 }
